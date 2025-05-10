@@ -47,10 +47,10 @@
   <!-- Insert ad code snippet here -->
 </header>
 <script>
-  // Simple client-side search (optional, can be replaced with Simple-Jekyll-Search)
   function handleHeaderSearch(e) {
     e.preventDefault();
     const searchTerm = document.getElementById('search-input').value;
-    window.location.href = '/articles/?q=' + encodeURIComponent(searchTerm);
+    // Use Jekyll's baseurl for correct path
+    window.location.href = '{{ site.baseurl }}/articles/?q=' + encodeURIComponent(searchTerm);
   }
 </script>

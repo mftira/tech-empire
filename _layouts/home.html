@@ -126,6 +126,6 @@ layout: default
 function handleHeroSearch(e) {
   e.preventDefault();
   const searchTerm = document.getElementById('hero-search-input').value;
-  window.location.href = '/articles/?q=' + encodeURIComponent(searchTerm);
+  window.location.href = '{{ site.baseurl }}/articles/?q=' + encodeURIComponent(searchTerm);
 }
 </script>

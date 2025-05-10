@@ -1,0 +1,83 @@
+---
+layout: default
+---
+<div class="post-layout">
+  <article class="post-full">
+    <!-- Ad space before content -->
+    <div class="ad-space">Ad Space - Header</div>
+
+    <div class="post-header">
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %-d, %Y" }}
+        </time>
+        {% if page.tags %}
+          <div class="post-tags">
+            {% for tag in page.tags %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      
+      <h1 class="post-title">{{ page.title }}</h1>
+      
+      {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+    </div>
+
+    {% if page.image %}
+      <div class="post-featured-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+    {% endif %}
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <!-- Ad space after content -->
+    <div class="ad-space">Ad Space - Footer</div>
+
+    <!-- Related Articles Section -->
+    <section class="related-articles">
+      <h2>Related Articles</h2>
+      <div class="related-articles-list">
+        {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+        {% assign related = "" | split: "" %}
+        {% for post in related_posts %}
+          {% assign intersect = post.tags | array_intersect: page.tags %}
+          {% if intersect.size > 0 %}
+            {% assign related = related | push: post %}
+          {% endif %}
+        {% endfor %}
+        {% for post in related limit:3 %}
+          <article class="related-article-card">
+            {% if post.image %}
+              <div class="related-article-image">
+                <a href="{{ post.url | relative_url }}">
+                  <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                </a>
+              </div>
+            {% endif %}
+            <div class="related-article-content">
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+            </div>
+          </article>
+        {% endfor %}
+        {% if related.size == 0 %}
+          <p>No related articles found.</p>
+        {% endif %}
+      </div>
+    </section>
+  </article>
+
+  <!-- Sidebar with ads -->
+  <aside class="post-sidebar">
+    <div class="ad-space ad-space-sidebar">
+      Ad Space - Sidebar
+    </div>
+  </aside>
+</div>

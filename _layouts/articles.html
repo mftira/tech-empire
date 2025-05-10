@@ -1,0 +1,127 @@
+---
+layout: default
+---
+<div class="articles-container">
+  <div class="articles-header">
+    <h1 class="gradient-text">All Articles</h1>
+    
+    <!-- Updated search form container -->
+    <div class="articles-search-container">
+      <form id="articles-search-form" class="search-form">
+        <input type="text" id="articles-search-input" placeholder="Search articles..." />
+        <button type="submit" class="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="articles-filters">
+    <div class="tags-filter">
+      {% assign all_tags = site.posts | map: "tags" | compact | uniq | sort %}
+      {% for tag in all_tags %}
+        <button class="tag filter-tag" data-tag="{{ tag }}">{{ tag }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div id="articles-grid" class="articles-grid">
+    {% for post in site.posts %}
+      <article class="post-card" data-tags="{{ post.tags | join: ',' }}">
+        {% if post.image %}
+          <div class="post-image">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </div>
+        {% endif %}
+        <div class="post-content">
+          <div class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </time>
+            {% if post.tags %}
+              {% for tag in post.tags %}
+                <span class="tag">{{ tag }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <div id="no-results" class="no-results" style="display: none;">
+    <p>No articles found matching your search.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('articles-search-input');
+  const articlesGrid = document.getElementById('articles-grid');
+  const noResults = document.getElementById('no-results');
+  const articles = document.querySelectorAll('.post-card');
+  const filterTags = document.querySelectorAll('.filter-tag');
+  let activeTag = null;
+
+  function filterArticles() {
+    const searchTerm = searchInput.value.toLowerCase();
+    let hasVisibleArticles = false;
+
+    articles.forEach(article => {
+      const title = article.querySelector('h2').textContent.toLowerCase();
+      const content = article.querySelector('p').textContent.toLowerCase();
+      const tags = article.dataset.tags.toLowerCase();
+      
+      const matchesSearch = title.includes(searchTerm) || content.includes(searchTerm);
+      const matchesTag = !activeTag || tags.includes(activeTag.toLowerCase());
+      
+      if (matchesSearch && matchesTag) {
+        article.style.display = 'block';
+        hasVisibleArticles = true;
+      } else {
+        article.style.display = 'none';
+      }
+    });
+
+    noResults.style.display = hasVisibleArticles ? 'none' : 'block';
+  }
+
+  searchInput.addEventListener('input', filterArticles);
+
+  filterTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+      if (activeTag === tag.dataset.tag) {
+        // Deactivate tag
+        tag.classList.remove('active');
+        activeTag = null;
+      } else {
+        // Activate tag
+        filterTags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+        activeTag = tag.dataset.tag;
+      }
+      filterArticles();
+    });
+  });
+
+  // Connect header search to articles page
+  const headerSearchForm = document.getElementById('search-form');
+  headerSearchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.location.href = '/articles/?q=' + encodeURIComponent(document.getElementById('search-input').value);
+  });
+
+  // Check for search parameter in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryParam = urlParams.get('q');
+  if (queryParam) {
+    searchInput.value = queryParam;
+    filterArticles();
+  }
+});
+</script>

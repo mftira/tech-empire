@@ -22,8 +22,8 @@ title: Tech Empire
 email: your-email@example.com
 description: >-
   Tech Empire is a modern, fast, SEO-optimized tech news blog covering tutorials, guides, and updates in AI, gadgets, apps, and innovation.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mftira.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/tech-empire" # the subpath of your site, e.g. /blog
 twitter_username: tech_empire
 github_username:  tech-empire
 

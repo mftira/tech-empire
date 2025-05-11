@@ -22,8 +22,8 @@ title: Tech Empire
 email: emperialcoder@gmail.com
 description: >-
   Tech Empire is a modern, fast, SEO-optimized tech news blog covering tutorials, guides, and updates in AI, gadgets, apps, and innovation.
-baseurl: "/tech-empire"   # (with leading slash, no trailing slash)
-url: "https://mftira.github.io"
+baseurl: ""   # leave empty for root domain
+url: "https://techempire.website"
 twitter_username: tech_empire
 github_username:  tech-empire
 

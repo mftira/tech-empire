@@ -6,10 +6,10 @@ permalink: /about/
 
 <div class="about-page">
   <!-- Ad space at top -->
-  <div class="ad-space">
+  <div class="ad-space" style="display:flex;justify-content:center;">
     <script type="text/javascript">
-      aclib.runAutoTag({
-          zoneId: 'edujuvxsbw',
+      aclib.runBanner({
+          zoneId: '9935958',
       });
     </script>
   </div>

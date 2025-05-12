@@ -6,7 +6,13 @@ permalink: /about/
 
 <div class="about-page">
   <!-- Ad space at top -->
-  <div class="ad-space">Ad Space - Top</div>
+  <div class="ad-space">
+    <script type="text/javascript">
+      aclib.runAutoTag({
+          zoneId: 'edujuvxsbw',
+      });
+    </script>
+  </div>
 
   <div class="about-container">
     <div class="about-header">

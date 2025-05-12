@@ -21,7 +21,7 @@ layout: default
 
   <div class="articles-filters">
     <div class="tags-filter">
-      {% assign all_tags = site.posts | map: "tags" | compact | uniq | sort %}
+      {% assign all_tags = site.posts | map: "tags" | join: "," | split: "," | map: "strip" | uniq | sort %}
       {% for tag in all_tags %}
         <button class="tag filter-tag" data-tag="{{ tag }}">{{ tag }}</button>
       {% endfor %}

@@ -84,7 +84,13 @@ permalink: /about/
   </div>
 
   <!-- Ad space at bottom -->
-  <div class="ad-space">Ad Space - Bottom</div>
+  <div class="ad-space">
+    <script type="text/javascript">
+      aclib.runAutoTag({
+          zoneId: 'edujuvxsbw',
+      });
+    </script>
+  </div>
 </div>
 
 <style>

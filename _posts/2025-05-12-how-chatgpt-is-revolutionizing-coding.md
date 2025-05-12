@@ -6,7 +6,7 @@ date: 2025-05-12
 tags: [AI, ChatGPT, coding, developer productivity, language models]
 categories: [ai, machine learning, coding, productivity]
 author: Tech Empire
-image: /assets/images/chatgpt-coding.jpg
+image: /assets/images/chatgpt.jpg
 ---
 
 # How ChatGPT is Revolutionizing Coding

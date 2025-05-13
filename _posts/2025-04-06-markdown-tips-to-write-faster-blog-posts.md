@@ -374,14 +374,14 @@ Different platforms support extensions to basic Markdown:
    - Autolinked references to issues and users
 
 2. **Jekyll/Liquid Extensions**:
-   ```markdown
-   {% include figure.html image="image.jpg" caption="Caption" %}
-   
+   ```liquid
+   {% raw %}
    {% highlight python %}
    def hello_world():
        print("Hello, World!")
    {% endhighlight %}
-   ```
+   {% endraw %}
+```
 
 3. **Hugo Shortcodes**:
    ```markdown

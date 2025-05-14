@@ -6,11 +6,13 @@ permalink: /about/
 
 <div class="about-page">
   <!-- Ad space at top -->
-  <div class="ad-space" style="display:flex;justify-content:center;">
+  <div class="ad-space ad-banner-container" style="display:flex;justify-content:center;margin:1.5em 0;min-height:90px;width:100%;max-width:728px;margin-left:auto;margin-right:auto;">
     <script type="text/javascript">
-      aclib.runBanner({
-          zoneId: '9935958',
-      });
+      if (window.aclib) {
+        aclib.runBanner({
+          zoneId: '9944294',
+        });
+      }
     </script>
   </div>
 
@@ -84,11 +86,13 @@ permalink: /about/
   </div>
 
   <!-- Ad space at bottom -->
-  <div class="ad-space">
+  <div class="ad-space ad-banner-container" style="display:flex;justify-content:center;margin:1.5em 0;min-height:90px;width:100%;max-width:728px;margin-left:auto;margin-right:auto;">
     <script type="text/javascript">
-      aclib.runAutoTag({
-          zoneId: 'edujuvxsbw',
-      });
+      if (window.aclib) {
+        aclib.runBanner({
+          zoneId: '9944294',
+        });
+      }
     </script>
   </div>
 </div>

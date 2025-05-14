@@ -514,6 +514,51 @@ footer {
   top: calc(var(--header-height) + 2rem);
 }
 
+/* Optimize ad spaces to prevent layout shifts */
+.ad-space, .ad-banner-container {
+  min-height: 90px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 728px;
+  margin: 20px auto;
+}
+
+/* For sidebar ads */
+.ad-space-sidebar {
+  position: sticky;
+  top: 80px; /* Adjust based on your header height */
+  min-height: 600px;
+}
+
+/* Ad space styling */
+.ad-space, .ad-banner-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 728px;
+  margin: 1.5em auto;
+  min-height: 90px;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Prevent layout shifts */
+.ad-banner-container iframe,
+.ad-space iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Mobile responsive ads */
+@media (max-width: 767px) {
+  .ad-space, .ad-banner-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
 /* Post Layout */
 .post-layout {
   display: grid;

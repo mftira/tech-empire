@@ -4,32 +4,71 @@
     <meta charset="utf-8">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="msvalidate.01" content="451FB5496FAD3CFC399DAC5223AEFA22" />
     {% seo %}
-    <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
-    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Insert critical styles here for faster initial render */
+      body {margin: 0; background: #121212; color: #ffffff;}
+      .header {width: 100%; position: fixed; top: 0; z-index: 100;}
+      main {margin-top: 60px;} /* Adjust based on your header height */
+    </style>
+    
+    <!-- Non-critical CSS with preload -->
+    <link rel="preload" href="{{ '/assets/css/dark-theme.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}"></noscript>
+    
+    <!-- Optimized font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" media="print" onload="this.media='all'">
+    
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
     <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - load asynchronously -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-29D5LJGTCV"></script>
     
+    <!-- AdCash loader script - load asynchronously -->
     <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
-  
+    
     <script>
+      // Deferred analytics execution
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-29D5LJGTCV');
+      gtag('config', 'G-29D5LJGTCV', {
+        'anonymize_ip': true, // GDPR compliance
+        'send_page_view': true
+      });
     </script>
-
-    <!-- Google Analytics -->
+    
+    <!-- Set explicit image dimensions to avoid layout shifts -->
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var images = document.querySelectorAll('img:not([width]):not([height])');
+        images.forEach(function(img) {
+          if (img.naturalWidth > 0) {
+            img.setAttribute('width', img.naturalWidth);
+            img.setAttribute('height', img.naturalHeight);
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     {% include header.html %}
     <main>{{ content }}</main>
     {% include footer.html %}
     
+    <!-- AdCash ad initialization -->
+    <script type="text/javascript">
+        aclib.runAutoTag({
+            zoneId: 'yop69xre2d',
+        });
+    </script>
+
   </body>
 </html>

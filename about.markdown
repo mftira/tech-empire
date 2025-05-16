@@ -5,16 +5,6 @@ permalink: /about/
 ---
 
 <div class="about-page">
-  <!-- Ad space at top -->
-  <div class="ad-space ad-banner-container" style="display:flex;justify-content:center;margin:1.5em 0;min-height:90px;width:100%;max-width:728px;margin-left:auto;margin-right:auto;">
-    <script type="text/javascript">
-      if (window.aclib) {
-        aclib.runBanner({
-          zoneId: '9944294',
-        });
-      }
-    </script>
-  </div>
 
   <div class="about-container">
     <div class="about-header">
@@ -83,17 +73,6 @@ permalink: /about/
         <a href="mailto:{{ site.email }}" class="contact-button">{{ site.email }}</a>
       </section>
     </div>
-  </div>
-
-  <!-- Ad space at bottom -->
-  <div class="ad-space ad-banner-container" style="display:flex;justify-content:center;margin:1.5em 0;min-height:90px;width:100%;max-width:728px;margin-left:auto;margin-right:auto;">
-    <script type="text/javascript">
-      if (window.aclib) {
-        aclib.runBanner({
-          zoneId: '9944294',
-        });
-      }
-    </script>
   </div>
 </div>
 

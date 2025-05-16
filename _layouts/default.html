@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="monetag" content="324aa4c6141010bd7e87c049eb780350">
     {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/dark-theme.css' | relative_url }}">
     <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
@@ -14,7 +15,6 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-29D5LJGTCV"></script>
     
-    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
   
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -23,18 +23,11 @@
       gtag('config', 'G-29D5LJGTCV');
     </script>
 
-    <!-- Google Analytics -->
   </head>
   <body>
     {% include header.html %}
     <main>{{ content }}</main>
     {% include footer.html %}
-    
-    <script type="text/javascript">
-        aclib.runAutoTag({
-            zoneId: 'yop69xre2d',
-        });
-    </script>
 
   </body>
 </html>

@@ -2,7 +2,10 @@
   <div class="header-container">
     <div class="header-left">
       <a href="{{ '/' | relative_url }}" class="logo-link">
-        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Tech Empire Logo" class="logo" style="height:60px; background-color: darkblue;">
+        <!-- Preloaded logo with explicit dimensions -->
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Tech Empire Logo" 
+             class="logo" width="60" height="60" 
+             style="background-color: darkblue; object-fit: contain;">
       </a>
     </div>
     

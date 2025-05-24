@@ -1,3 +1,10 @@
+# Allow all robots
 User-agent: *
 Allow: /
+
+# Block access to sensitive areas
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
 Sitemap: https://techempire.website/sitemap.xml

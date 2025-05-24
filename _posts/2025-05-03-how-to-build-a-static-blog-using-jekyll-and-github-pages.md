@@ -681,7 +681,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${% raw %}{{ runner.os }}{% endraw %}-gems-${% raw %}{{ hashFiles('**/Gemfile.lock') }}{% endraw %}          
           restore-keys: |
             ${{ runner.os }}-gems-
       - uses: helaili/jekyll-action@v2

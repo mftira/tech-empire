@@ -383,11 +383,12 @@ Different platforms support extensions to basic Markdown:
    {% endraw %}
 ```
 
+```markdown
 3. **Hugo Shortcodes**:
-   ```markdown
-   {{< youtube dQw4w9WgXcQ >}}
+   ```text
+   {% raw %}{{< youtube dQw4w9WgXcQ >}}
    
-   {{< figure src="image.jpg" title="Title" >}}
+   {{< figure src="image.jpg" title="Title" >}}{% endraw %}
    ```
 
 ## Platform-Specific Markdown Tips

@@ -135,25 +135,26 @@ Only runs in production environment to prevent tracking during local development
 
 Create a partial in `layouts/partials/googleanalytics.html`:
 
-```html
-{{ if not .Site.IsServer }}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+```toml
+<!-- In Hugo's config.toml -->
+googleAnalytics = "G-XXXXXXXXXX"
 
-  gtag('config', '{{ .Site.Params.googleAnalytics }}');
-</script>
-{{ end }}
+<!-- In a layout template -->
+{% raw %}{{ if not .Site.IsServer }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
+  </script>
+{{ end }}{% endraw %}
 ```
 
-Then in your `config.toml` file:
+Then include the partial in your `<head>` section:
 
-```toml
-[params]
-  googleAnalytics = "G-XXXXXXXXXX"
+```html
+{% raw %}{{ partial "googleanalytics.html" . }}{% endraw %}
 ```
 
 And include the partial in your `<head>` section.

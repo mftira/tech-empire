@@ -46,13 +46,24 @@ header {
   height: var(--header-height);
 }
 
+.logo {
+  width: 60px;
+  height: 60px;
+  background-color: darkblue;
+  object-fit: contain;
+  display: block;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logo-loaded {
+  opacity: 1;
+}
+
 .logo-link {
   display: flex;
   align-items: center;
-}
-
-.logo {
-  height: 40px;
+  text-decoration: none;
 }
 
 .main-nav {
@@ -387,6 +398,74 @@ footer {
 .view-all {
   color: var(--accent-color);
   font-weight: 500;
+}
+
+/* Modern Breadcrumbs Styling */
+.breadcrumbs {
+  margin: 1rem 0 2rem;
+  font-size: 0.9rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.5rem;
+  color: var(--text-secondary);
+}
+
+.breadcrumbs a {
+  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-hover);
+}
+
+.breadcrumbs li.current {
+  color: var(--text-secondary);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumbs svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    margin-top: 0;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+  }
+  
+  .breadcrumbs li:not(:last-child):not(:first-child) {
+    display: none;
+  }
 }
 
 /* Responsive Design */

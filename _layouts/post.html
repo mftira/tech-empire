@@ -1,6 +1,35 @@
 ---
 layout: default
 ---
+
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="{{ '/' | relative_url }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {% if page.categories.size > 0 %}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        {% assign category = page.categories[0] %}
+        <a itemprop="item" href="{{ site.baseurl }}/articles/?q={{ category }}">
+          <span itemprop="name">{{ category | capitalize }}</span>
+        </a>
+        <meta itemprop="position" content="2" />
+      </li>
+    {% endif %}
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="current">
+      <span itemprop="name">{{ page.title }}</span>
+      <meta itemprop="position" content="3" />
+    </li>
+  </ol>
+</nav>
+
+
 <div class="post-layout">
   <article class="post-full">
 
@@ -71,32 +100,6 @@ layout: default
 
 </div>
 
-<nav class="breadcrumbs" aria-label="Breadcrumbs">
-  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="{{ '/' | relative_url }}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        </svg>
-        <span itemprop="name">Home</span>
-      </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    {% if page.categories.size > 0 %}
-      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        {% assign category = page.categories[0] %}
-        <a itemprop="item" href="{{ site.baseurl }}/articles/?q={{ category }}">
-          <span itemprop="name">{{ category | capitalize }}</span>
-        </a>
-        <meta itemprop="position" content="2" />
-      </li>
-    {% endif %}
-    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="current">
-      <span itemprop="name">{{ page.title }}</span>
-      <meta itemprop="position" content="3" />
-    </li>
-  </ol>
-</nav>
 
 <script type="application/ld+json">
 {

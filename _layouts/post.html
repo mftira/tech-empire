@@ -84,7 +84,11 @@ layout: default
           
           {% if sameTagCount >= minCommonTags %}
             <a href="{{ post.url | relative_url }}" class="related-post-card">
-              <div class="related-post-image" style="background-image: url({{ post.image | relative_url }})"></div>
+              {% if post.image %}
+                <div class="related-post-image" style="background-image: url('{{ post.image | relative_url }}')"></div>
+              {% else %}
+                <div class="related-post-image"></div>
+              {% endif %}
               <h4>{{ post.title }}</h4>
             </a>
             
